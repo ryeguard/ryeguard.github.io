@@ -1,8 +1,4 @@
----
-title: rygard.se
----
-
-# rygrad.se
+# rygard.se
 
 ## ✏️ Blog Posts
 
