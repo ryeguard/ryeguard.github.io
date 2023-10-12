@@ -1,5 +1,3 @@
-# rygard.se
+# ryeguard.github.io
 
-## Blog posts
-
-- [2023-10-09: Setting up a website with minimal cost using Hostup.se and Github Pages](./blog/231009_website/231009_website.md)
+The repository for my personal website. The website is hosted using Github Pages and the domain is managed by Hostup.se. Read more about the setup [here](./docs/blog/231009_website/231009_website.md).
