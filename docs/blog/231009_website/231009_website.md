@@ -8,9 +8,7 @@ During setup, there is no need to set nameservers or add hosting.
 
 After completing the purchase, the domain is registered and ready to be configured.
 
-> [!NOTE]
->
-> The client information you provide during the purchase will not be made public in the Whois record via [ICANN Lookup](https://lookup.icann.org) or [IIS.SE](https://www.iis.se/en/). For `.se` and `.nu` domains, no client information is made public by Hostup. This is the Whois record for rygard.se:
+> ℹ️ The client information you provide during the purchase will not be made public in the Whois record via [ICANN Lookup](https://lookup.icann.org) or [IIS.SE](https://www.iis.se/en/). For `.se` and `.nu` domains, no client information is made public by Hostup. This is the Whois record for rygard.se:
 > ```
 > state:            active
 > domain:           rygard.se
@@ -38,9 +36,7 @@ Github Pages is a free service that allows you to host a static website from a G
 
 Create a new, public repository named `<username>.github.io` where `<username>` is your Github username. This is a special repository name that Github Pages will automatically use to host a website. Detailed instructions can be found [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site). A simple `README.md` file in the repository root is enough for the website to be hosted. Allow a few minutes for the website to be built and deployed.
 
-> [!WARNING]
->
-> Since this repository is public, anyone can see the source code of your website. Do not push any sensitive information to this repository.
+> ⚠️ Since this repository is public, anyone can see the source code of your website. Do not push any sensitive information to this repository.
 
 ### Configuring a custom domain
 
@@ -62,14 +58,14 @@ An A record is used to point a domain to an IP address. In this case, we want to
 
 Create four A records in the Hostup.se control panel with the following values:
 
-| Name | Content (IP address) |
-| ---- | -------------------- |
-| `www`* | `185.199.108.153`** |
-| `www`* | `185.199.109.153`** |
-| `www`* | `185.199.110.153`** |
-| `www`* | `185.199.111.153`** |
+| Name* | Content (IP address)** |
+| ----- | ---------------------- |
+| `www` | `185.199.108.153` |
+| `www` | `185.199.109.153` |
+| `www` | `185.199.110.153` |
+| `www` | `185.199.111.153` |
 
-> [!NOTE]
+> ℹ️
 >
 > \* Hostup.se appends `.<your-domain>.se` to the Name field. This is why we only write `www` in the Name field. The resulting record will be `www.<your-domain>.se`.
 >
@@ -99,9 +95,7 @@ Create an ALIAS record with the following values:
 
 Where, again, `<your-domain>` is your domain name.
 
-> [!NOTE]
->
-> The Name field is left empty because we want to point the root domain to the `www` subdomain.
+> ℹ️ The Name field is left empty because we want to point the root domain to the `www` subdomain.
 
 #### CAA record
 
@@ -127,4 +121,4 @@ After completing all other configuration and verifying that the website is worki
 
 ## Conclusion
 
-Congratulations, you have now set up a website with minimal cost using Hostup.se and Github Pages. The total cost is 108 SEK for the domain and 0 SEK for the hosting. The domain is registered for one year and can be renewed for 110 SEK. The hosting is free and will remain free as long as Github Pages is free.
+Congratulations! You have now set up a website with minimal cost using Hostup.se and Github Pages. The total cost is 108 SEK for the domain and 0 SEK for the hosting. The domain is registered for one year and can be renewed for 110 SEK. The hosting is free and will remain free as long as Github Pages is free.
