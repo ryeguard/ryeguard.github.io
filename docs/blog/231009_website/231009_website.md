@@ -1,7 +1,9 @@
 # Setting up a website and email with minimal cost using Hostup.se, Github Pages and Apple iCloud+
 
 In this post, we will register our own domain using [Hostup.se](https://hostup.se/en/). For free hosting of our website, we will use [Github Pages](https://pages.github.com).
-Although these instructions are written for Hostup.se, they should be applicable to any domain registrar that allows you to configure DNS records. We will also set up custom email addresses using [Apple iCloud+](https://www.apple.com/icloud/). Usually, this would require a paid email hosting service, but Apple iCloud+ allows you to create a custom email domain as part of the subscription.
+Although these instructions are written for Hostup.se, they should be applicable to any domain registrar that allows you to configure DNS records. Additionally, wherever the top-level domain (TLD) is `.se`, it should be a matter of replacing `.se` with the TLD of your domain, like `.com`.
+
+We will also set up custom email addresses using [Apple iCloud+](https://www.apple.com/icloud/). Usually, this would require a paid email hosting service, but Apple iCloud+ allows you to create a custom email domain as part of the subscription.
 
 ## Table of Contents
 
@@ -60,7 +62,7 @@ Create a new, public repository named `<username>.github.io` where `<username>` 
 
 ### Configuring a Custom Domain
 
-Detailed instructions can be found [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site). In short, navigate to the repository's Settings and click the Pages tab. Under Custom domain, enter your domain name, like `www.<your-domain>.se` and click Save. This will create a file named `CNAME` in the repository root. The file should contain only the domain name, without any protocol or trailing slash.
+Detailed instructions can be found [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site). In short, navigate to the repository's Settings and click the Pages tab. Under Custom domain, enter your domain name, like `www.<domain-name>.se` and click Save. This will create a file named `CNAME` in the repository root. The file should contain only the domain name, without any protocol or trailing slash.
 
 The Github specific configuration is now done. The next step is to configure the DNS records for the domain.
 
@@ -86,33 +88,32 @@ Create four A records in the Hostup.se control panel with the following values:
 | `www` | `185.199.111.153` |
 
 > ℹ️ \
-> \* Hostup.se appends `.<your-domain>.se` to the Name field. This is why we only write `www` in the Name field. The resulting record will be `www.<your-domain>.se`.
->
-> \*\* Double check these IP addresses in the official documentation. They may change.
+> **\*** Hostup.se appends `.<domain-name>.se` to the Name field. This is why we only write `www` in the Name field. The resulting record will be `www.<domain-name>.se`. \
+> **\*\*** Double check these IP addresses in the official documentation. They may change.
 
 #### CNAME Record
 
-A CNAME record is used to point a subdomain to another domain. In this case, we want to point `www.<your-domain>.se` to the Github Pages domain.
+A CNAME record is used to point a subdomain to another domain. In this case, we want to point `www.<domain-name>.se` to the Github Pages domain.
 
 Create a CNAME record with the following values:
 
 | Name | Content (Hostname) |
 | ---- | ------------------ |
-| `www.<your-domain>.se` | `<username>.github.io` |
+| `www.<domain-name>.se` | `<username>.github.io` |
 
-Where, again, `<your-domain>` is your domain name and `<username>` is your Github username.
+Where `<domain-name>` is your domain name and `<username>` is your Github username.
 
 #### ALIAS Record
 
-An ALIAS record is used to point a domain to another domain. In this case, we want to point the root domain to the `www` subdomain.
+An ALIAS record is used to point a domain to another domain. In this case, we want to point the root domain (also known as the apex domain and usually denoted with `@`, i.e., `<domain-name>.se` or `@.<domain-name>.se`) to the `www` subdomain, i.e., `www.<domain-name>.se`.
 
 Create an ALIAS record with the following values:
 
 | Name | Content |
 | ---- | ------- |
-| (leave empty) | `www.<your-domain>.se` |
+| (leave empty) | `www.<domain-name>.se` |
 
-Where, again, `<your-domain>` is your domain name.
+Where, again, `<domain-name>` is your domain name.
 
 > ℹ️ The Name field is left empty because we want to point the root domain to the `www` subdomain.
 
@@ -124,7 +125,7 @@ Create a CAA record with the following values:
 
 | Name | Content |
 | ---- | ------- |
-| `www.<your-domain>.se>` | `0 issue "letsencrypt.org"` |
+| `www.<domain-name>.se>` | `0 issue "letsencrypt.org"` |
 
 #### DNSSEC
 
@@ -148,11 +149,11 @@ Apple iCloud+ allows you to create a custom email domain as part of the subscrip
 | MX | (leave empty) | `10` | `mx02.mail.icloud.com.` |
 | TXT | (leave empty) | N/A | `apple-domain=<some-id>` |
 | TXT ("SPF") | (leave empty) | N/A | `"v=spf1 include:icloud.com ~all"` |
-| CNAME | `sig1._domainkey` | N/A | `sig1.dkim.<your-domain>.se.at.icloudmailadmin.com.` |
+| CNAME | `sig1._domainkey` | N/A | `sig1.dkim.<domain-name>.se.at.icloudmailadmin.com.` |
 
 > ℹ️ \
-> \* Apple's instructions say to set host as `@` for the MX and TXT records, at Hostup.se this is equivalent to leaving the Host field empty.
-> \*\* Use the values provided in the Apple instructions.
+> **\*** Apple's instructions say to set host as `@` for the MX and TXT records, at Hostup.se this is equivalent to leaving the Host field empty. \
+> **\*\*** Use the values provided in the Apple instructions.
 
 ## Conclusion
 
