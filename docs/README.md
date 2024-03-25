@@ -7,6 +7,10 @@
 - [2024-01-22: Recursive SQL](./blog/240122_local_db/240122_recursive_sql.md)
 - [2024-02-20: DynamoDB Item Size](./blog/240220_dynamodb_item_size/240220_dynamodb_item_size.md)
 
-## Gists
+## 🗒️ Gists
 
 - [`mermaid` test](./gists/mermaid.md)
+
+---
+
+[github](https://github.com/ryeguard) | [linkedin](https://www.linkedin.com/in/srygard)
