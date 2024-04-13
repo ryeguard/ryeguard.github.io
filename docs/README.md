@@ -10,6 +10,7 @@
 ## 🗒️ Gists
 
 - [`mermaid` test](./gists/mermaid.md)
+- [`psql` on macOS](./gists/psql.md)
 
 ---
 
