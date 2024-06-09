@@ -11,6 +11,8 @@ In this post, we will go through how you can get started with setting up a [Next
   - [3. Preparing Locally](#3-preparing-locally)
   - [4. Preparing a Github Repository](#4-preparing-a-github-repository)
   - [5. Configuring Google Cloud](#5-configuring-google-cloud)
+  - [6. Testing](#6-testing)
+- [Configuring a Custom Domain](#configuring-a-custom-domain)
 
 ## Getting Started
 
@@ -178,7 +180,17 @@ Finally, we can test that everything works as expected. Push a small change to t
 
 ## Configuring a Custom Domain
 
-`// TODO`
+As previously stated in this guide, you are assigned a static URL when you create a Cloud Run service. This URL is not very user friendly, and you probably want to use your own domain. Documentation can be found in the [Cloud Run Docs](https://cloud.google.com/run/docs/mapping-custom-domains), but I will walk you through the steps here.
+
+Go to the [Cloud Search Console](https://search.google.com/search-console) and add a property of type "Domain". I personally wanted to deploy the Next.js app to `app.rygard.se`, as opposed to `www.rygard.se`, so I entered `app.rygard.se` as (sub)domain.
+
+The page will ask you to verify the ownership of this property via DNS record. Follow the instructions provided to add a TXT record in your host's DNS management page (Hostup.se in my case), much like we did in the [previous blog post](../231009_website/231009_website.md) for Github Pages.
+
+Now, we can head to the [Cloud Run Services](https://console.cloud.google.com/run) page and click on our service. Find the [Domains page](https://console.cloud.google.com/run/domains) and add a new mapping. Select your service, e.g., `nextjs-app` and enter the domain we just verified, e.g. `app.rygard.se`. No need to enter anything the the subdomain field.
+
+Now we are asked to make the final DNS changes. Head back to your hosts's DNS management page and add the records provided. These are four A records and four AAAA records.
+
+Finally, allow some time for the change to propagate, after a while you should be able to reach your app on your custom domain, like `app.<domain-name>.se`.
 
 <!--
 ## Bonus: Installing Google Cloud SDK
