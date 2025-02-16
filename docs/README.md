@@ -6,6 +6,8 @@
 - [2024-01-22: Local Databases for Testing and Learning](./blog/240122_local_db/240122_local_db.md)
 - [2024-01-22: Recursive SQL](./blog/240122_local_db/240122_recursive_sql.md)
 - [2024-02-20: DynamoDB Item Size](./blog/240220_dynamodb_item_size/240220_dynamodb_item_size.md)
+- [2024-02-16: TagVal: A Lightweight Validation Go Package for Struct Field Values](./blog/250216_tagval/250216_tagval.md)
+
 
 ## 🗒️ Gists
 
